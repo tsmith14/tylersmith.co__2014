@@ -27,6 +27,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'thin' #dev app server
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -44,3 +46,7 @@ gem 'rvm-capistrano'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+#Integration with Jekyll - https://blog.engineyard.com/2012/introducing-bloggy-a-simple-way-to-add-a-jekyll-blog-to-any-rails-application
+gem 'bloggy'
