@@ -5,3 +5,4 @@ task :generate do
     system('jekyll')
   end
 end
+
