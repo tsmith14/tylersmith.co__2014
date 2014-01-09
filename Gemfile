@@ -50,3 +50,5 @@ gem 'rvm-capistrano'
 
 #Integration with Jekyll - https://blog.engineyard.com/2012/introducing-bloggy-a-simple-way-to-add-a-jekyll-blog-to-any-rails-application
 gem 'bloggy'
+
+gem 'nokogiri'

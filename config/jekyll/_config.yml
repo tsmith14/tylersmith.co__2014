@@ -2,7 +2,13 @@ markdown: rdiscount
 permalink: /:title.html
 destination: ../../public/internship
 auto: true
+paginate: 10 # pagination basted on number of posts
+url: http://localhost:3001/internship
+#url: http://internship.tylersmith.co
 exclude:
   - Rakefile
   - Gemfile
   - .gitignore
+  - watch.sh
+  - style.scss
+  - sass
