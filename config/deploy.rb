@@ -1,4 +1,4 @@
-re "bundler/capistrano"
+require "bundler/capistrano"
 require "rvm/capistrano"
 
 server "162.243.218.223", :web, :app, :db, primary: true
@@ -11,12 +11,22 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git@github.com:tsmith14/tsmith14/tylersmith.co.git"
+set :repository, "git@github.com:tsmith14/tylersmith.co.git"
 set :branch, "master"
-
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
+
+set :rvm_type, :system
+set :rvm_ruby_string, :local 
+
+#Setup Stages
+#require 'capistrano/ext/multistage'
+#set :stages, %w(production staging)
+#set :default_stage, "staging"
+
+before 'deploy:setup', 'rvm:install_rvm'
+before 'deploy', 'rvm:install_ruby' # install Ruby and create gemset
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 

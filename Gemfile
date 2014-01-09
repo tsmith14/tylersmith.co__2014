@@ -3,11 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
-
 #Use MySQL
-gem "mysql2", "0.3.11"
+gem "mysql2"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -42,7 +39,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano'
+gem 'capistrano', '2.15.5'
 gem 'rvm-capistrano'
 
 # Use debugger
