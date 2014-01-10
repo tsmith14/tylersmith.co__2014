@@ -1,10 +1,10 @@
 markdown: rdiscount
 permalink: /:title.html
-destination: ../../public/internship
+destination: ../../../public
 auto: true
 paginate: 10 # pagination based on number of posts
-#url: http://localhost:3001/internship
-url: http://internship.tylersmith.co
+url: http://localhost:3001/internship
+#url: http://internship.tylersmith.co
 exclude:
   - Rakefile
   - Gemfile
