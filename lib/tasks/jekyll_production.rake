@@ -3,13 +3,13 @@ task :jekyll_production do
   Dir.chdir("config/jekyll/home") do
   	system('rm _config.yml')
   	system('cp _config.production.yml _config.yml')
-  	system('jekyll build')
+  	system('jekyll')
   end
   Dir.chdir("config/jekyll/internship") do 
   	system('rm _config.yml')
   	system('cp _config.production.yml _config.yml')
   	system('sh watch.sh')
-  	system('jekyll build')
+  	system('jekyll')
   end
   Dir.chdir("config") do
   	puts Dir.pwd
