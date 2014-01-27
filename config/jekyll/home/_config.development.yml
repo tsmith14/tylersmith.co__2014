@@ -1,0 +1,13 @@
+markdown: rdiscount
+permalink: /:categories/:title
+destination: ../../../public
+auto: false
+paginate: 10 # pagination based on number of posts
+url: http://localhost:3001
+exclude:
+  - Rakefile
+  - Gemfil
+  - .gitignore
+  - watch.sh
+  - style.scss
+  - sass

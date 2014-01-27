@@ -1,0 +1,19 @@
+---
+layout: post
+published: true
+title: Week 1
+subtitle: 
+category: internship
+---
+
+For the first week of my internship, I began to lay down the base for our new product **TeacherTeams**. Because we will have a couple different people writing code and editing the site, I started researching different methods of sharing code, writing tests, and standardizing our workflow. 
+
+For sharing code, we will use [Github](http://www.github.com) which is a popular web app for managing Git-based applications. Git is a distributed revision control and source code management (SCM) system with an emphasis on speed. Put simply, Git allows multiple users to share changes made to the same set of documents. It also saves the entire history of a document so that you can see the progress as well as revert to previous versions. 
+
+I am still evaluating different options for writing code tests. The goal with tests is to be able to write down your expectations for a certain action in a "code-like" language. By writing tests before beginning programming, you can use the tests to evaluate your code as you work through the project. This also helps when we have many people working on the same project so that different code additions don't interfere and break and purpose of a specific method. 
+
+Finally, I went ahead and purchased and setup a dedicated server. Basically, a "server" is just a specialized "computer" and "dedicated" means we don't have to share it with anybody. We chose to rent this server with an up-and-coming startup called [Digital Ocean](https://www.digitalocean.com/) because they have fair prices and a lot of useful resources. 
+
+In order to setup the server, I had to go through quite a few steps. I made sure to record what steps I took so that it could be repeated in the future. Here is the tutorial I generated: [tutorial]({{ site.home_url }}/tutorial/ubuntu-server-setup). Basically, all of our interactions with the server are performed through the terminal window. Here's what it looks like: ![Teacher Team Console Window]({{site.url}}/images/teacher_teams_console.png)
+
+After getting "Ruby on Rails", "MySQL", and "Nginx" setup on our server, I was able to point our domain at our server's ip address so that (TeacherTeams)[http://teacherteams.com] was now live! The site is nothing special as of writing this, but it will become the platform for future updates as we progress through the project. 

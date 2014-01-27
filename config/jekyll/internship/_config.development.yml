@@ -1,7 +1,7 @@
 markdown: rdiscount
-permalink: /:title.html
+permalink: /:title
 destination: ../../../public/internship
-auto: true
+auto: false
 paginate: 10 # pagination based on number of posts
 url: http://localhost:3001/internship
 #url: http://internship.tylersmith.co
