@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-		<title> week2  - Tyler Smith</title>
+		<title> Week 2  - Tyler Smith</title>
 		<!-- For responsive site
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		-->
@@ -53,9 +53,15 @@
 			</article>
 			<article class="post">
 				<h5>20 January 2014</h5>
-				<h2 class="content">week2</h2>
+				<h2 class="content">Week 2</h2>
 				<section>
-					
+					<p>This week was a big experimental week. We had developed a theory for a setup for our new system but have never done something like it before and therefore didn't know if we could make it work. Basically, this is what we were trying to do: <img src="http://internship.tylersmith.co/images/benty_core_design.png" alt="benty_db_design" /></p>
+
+<p>This design actually constitutes two interconnected products. Because we make educational products, we wanted to create a place for us to store basic teacher and admin info for all of our systems. This is what we're calling the "Benty Core". The Core will be managed by a system on another server where the account owner can upload and edit their district and school information. Then the Teacher Teams application (as well as any other apps we make) will be able to access this data.</p>
+
+<p>This distributed database system took a couple days to setup. I purchased two more servers and a couple domains, and setup MySQL (a database platform) on one of them and a Ruby on Rails application on the other. I then had to research how I was going to get the Teacher Teams application connected to the "Core" database. There were basically two options: Database Replication or Federated Datatables. I hadn't really had experience with either option. After looking at the advantages and disadvantages of each, I decided federated tables were probably a better method for our needs. This will allow us to setup sudo-tables on the Teacher Teams server that merely represent the Core tables. However, the data is only actually stored on the Core server which is a more efficient storage structure for our purpose.</p>
+
+<p>Getting two additional servers setup, hooking them up to domains, and then setting up this distributed structure made it a pretty efficient week. Now looking forward, we will be able to start designing database structure and website layouts of these two interconnected systems.</p>
 
 					<hr>
 				</section>
@@ -63,9 +69,7 @@
 					 
 							<a rel="prev" class="a-hover" href="http://internship.tylersmith.co/week1"><i class="icon-double-angle-left"></i> Week 1</a>
 						
-						 
-							<a rel="next" style="float:right" class="a-hover" href="http://internship.tylersmith.co/week3">week3 <i class=" icon-double-angle-right"></i></a>
-					
+						
 				</section>
 			</article>
 		</div>

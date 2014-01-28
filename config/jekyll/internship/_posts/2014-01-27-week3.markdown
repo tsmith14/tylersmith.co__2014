@@ -1,6 +1,8 @@
 ---
 layout: post
-published: true
-title: week3
+published: false
+title: Week 3 
 category: internship
 ---
+
+-Did some planning with Ben

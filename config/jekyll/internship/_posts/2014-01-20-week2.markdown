@@ -1,6 +1,14 @@
 ---
 layout: post
 published: true
-title: week2
+title: Week 2
 category: internship
 ---
+
+This week was a big experimental week. We had developed a theory for a setup for our new system but have never done something like it before and therefore didn't know if we could make it work. Basically, this is what we were trying to do: ![benty_db_design]({{ site.url}}/images/benty_core_design.png)
+
+This design actually constitutes two interconnected products. Because we make educational products, we wanted to create a place for us to store basic teacher and admin info for all of our systems. This is what we're calling the "Benty Core". The Core will be managed by a system on another server where the account owner can upload and edit their district and school information. Then the Teacher Teams application (as well as any other apps we make) will be able to access this data. 
+
+This distributed database system took a couple days to setup. I purchased two more servers and a couple domains, and setup MySQL (a database platform) on one of them and a Ruby on Rails application on the other. I then had to research how I was going to get the Teacher Teams application connected to the "Core" database. There were basically two options: Database Replication or Federated Datatables. I hadn't really had experience with either option. After looking at the advantages and disadvantages of each, I decided federated tables were probably a better method for our needs. This will allow us to setup sudo-tables on the Teacher Teams server that merely represent the Core tables. However, the data is only actually stored on the Core server which is a more efficient storage structure for our purpose. 
+
+Getting two additional servers setup, hooking them up to domains, and then setting up this distributed structure made it a pretty efficient week. Now looking forward, we will be able to start designing database structure and website layouts of these two interconnected systems. 

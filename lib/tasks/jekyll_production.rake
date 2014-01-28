@@ -11,7 +11,7 @@ task :jekyll_production do
   	system('sh watch.sh')
   	system('jekyll')
   end
-  Dir.chdir("config") do
+  Dir.chdir(Rake.application.original_dir) do
   	puts Dir.pwd
   	system('git add .')
   	system('git commit -a -m "Production Changes"')
