@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
-		<title> Week 2  - Tyler Smith</title>
+		<title> Week 3  - Tyler Smith</title>
 		<!-- For responsive site
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		-->
@@ -52,26 +52,33 @@
 				</a>
 			</article>
 			<article class="post">
-				<h5>20 January 2014</h5>
-				<h2 class="content">Week 2</h2>
+				<h5>27 January 2014</h5>
+				<h2 class="content">Week 3</h2>
 				<section>
-					<p>This week was a big experimental week. We had developed a theory for a setup for our new system but have never done something like it before and therefore didn't know if we could make it work. Basically, this is what we were trying to do: <img src="http://internship.tylersmith.co/images/benty_core_design.png" alt="benty_db_design" /></p>
+					<p>Well, this week was a wild one; at least as far as the weather goes. We ended up missing two days of school to snow.</p>
 
-<p>This design actually constitutes two interconnected products. Because we make educational products, we wanted to create a place for us to store basic teacher and admin info for all of our systems. This is what we're calling the "Benty Core". The Core will be managed by a system on another server where the account owner can upload and edit their district and school information. Then the Teacher Teams application (as well as any other apps we make) will be able to access this data.</p>
+<p><img src="/images/show_on_shoe.jpg" alt="Horeshoe Snow" />
+<img src="/images/rutledge_snow.jpg" alt="Rutledge Snow" /></p>
 
-<p>This distributed database system took a couple days to setup. I purchased two more servers and a couple domains, and setup MySQL (a database platform) on one of them and a Ruby on Rails application on the other. I then had to research how I was going to get the Teacher Teams application connected to the "Core" database. There were basically two options: Database Replication or Federated Datatables. I hadn't really had experience with either option. After looking at the advantages and disadvantages of each, I decided federated tables were probably a better method for our needs. This will allow us to setup sudo-tables on the Teacher Teams server that merely represent the Core tables. However, the data is only actually stored on the Core server which is a more efficient storage structure for our purpose.</p>
+<p>Despite the snow, I was able to make some solid progress with our new application. The first order of business was knocking of a task that's been on our to-do list for a long time. We wanted a way of invoicing our customers from our own server so that we can manage payments better. For this, I purchased a new server and installed <a href="http://www.pancakeapp.com">Pancake</a>, a self-hosted billing platform, on it. This is what the system looks like:</p>
 
-<p>Getting two additional servers setup, hooking them up to domains, and then setting up this distributed structure made it a pretty efficient week. Now looking forward, we will be able to start designing database structure and website layouts of these two interconnected systems.</p>
+<p><img src="/images/benty_pancake.png" alt="Pancake on Benty" />
+<img src="/images/benty_invoice.png" alt="Benty Invoice" /></p>
+
+<p>This system took 6-8 hours to get completely setup because I had to not only get the server setup correctly but also customize the application to fit our needs.</p>
+
+<p>I also had two important meetings this week. The first was with my partner. We discussed the database schema for our core product and went over some hypothetical scenarios. Our next big step will be completely designing this system so that we can start building the application on it.</p>
+
+<p>The second meeting was with my partner and one of our district connections. We talked about some of the software they use and how we can integrate and use it. The insights from this meeting will also be crucial in designing the new systems because we know what data the districts have access to as well as what they don't. We are researching ways that we can integrate directly with their SIS (student information systems) so that the data transfer process will be a breeze for them.
+  <strong>By making the signup and setup process simple and fluid, we should be able to keep our retention rate high.</strong></p>
 
 					<hr>
 				</section>
 				<section style="font-weight:bold; margin-bottom: 2em;">
 					 
-							<a rel="prev" class="a-hover" href="http://internship.tylersmith.co/week1"><i class="icon-double-angle-left"></i> Week 1</a>
+							<a rel="prev" class="a-hover" href="http://internship.tylersmith.co/week2"><i class="icon-double-angle-left"></i> Week 2</a>
 						
-						 
-							<a rel="next" style="float:right" class="a-hover" href="http://internship.tylersmith.co/week3">Week 3 <i class=" icon-double-angle-right"></i></a>
-					
+						
 				</section>
 			</article>
 		</div>
