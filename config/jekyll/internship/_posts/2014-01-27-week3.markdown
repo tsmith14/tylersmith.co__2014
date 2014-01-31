@@ -5,4 +5,19 @@ title: Week 3
 category: internship
 ---
 
--Did some planning with Ben
+Well, this week was a wild one; at least as far as the weather goes. We ended up missing two days of school to snow. 
+
+![Horeshoe Snow]({{ site_url }}/images/show_on_shoe.jpg)
+![Rutledge Snow]({{ site_url }}/images/rutledge_snow.jpg)
+
+Despite the snow, I was able to make some solid progress with our new application. The first order of business was knocking of a task that's been on our to-do list for a long time. We wanted a way of invoicing our customers from our own server so that we can manage payments better. For this, I purchased a new server and installed [Pancake](http://www.pancakeapp.com), a self-hosted billing platform, on it. This is what the system looks like:
+
+![Pancake on Benty]({{ site_url }}/images/benty_pancake.png)
+![Benty Invoice]({{ site_url }}/images/benty_invoice.png)
+
+This system took 6-8 hours to get completely setup because I had to not only get the server setup correctly but also customize the application to fit our needs. 
+
+I also had two important meetings this week. The first was with my partner. We discussed the database schema for our core product and went over some hypothetical scenarios. Our next big step will be completely designing this system so that we can start building the application on it. 
+
+The second meeting was with my partner and one of our district connections. We talked about some of the software they use and how we can integrate and use it. The insights from this meeting will also be crucial in designing the new systems because we know what data the districts have access to as well as what they don't. We are researching ways that we can integrate directly with their SIS (student information systems) so that the data transfer process will be a breeze for them. 
+  **By making the signup and setup process simple and fluid, we should be able to keep our retention rate high.**
