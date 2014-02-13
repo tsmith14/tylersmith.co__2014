@@ -1,0 +1,11 @@
+---
+layout: post
+published: true
+title: Week 4
+category: internship
+---
+
+This week was a big planning week. Using information we had gathered from our meeting last week, we were able to get a better idea about what the Core structure should look like. Additionally, we started planning for integrating with school's student information systems. We found a really cool program called (Clever)[https://clever.com] that actually already integrates with multiple SIS programs like Powerschool and InfiniteCanvas. After talking with one of their representatives, we will probably have to make Clever sync a paid add-on for our systems because it will cost us quite a bit to utilize it. We will have to see what we can end up doing with it. 
+
+We also had a very interesting occurrence this week. We had a meeting with a Personal Development company out of Britain. It is a product that would complement our main product, Classroom Mosaic, quite well. We exchanged info about our products and gave each other login information. In a week, we will talk again to discuss how an integration would look. Its a big opportunity that we will continue working on. 
+

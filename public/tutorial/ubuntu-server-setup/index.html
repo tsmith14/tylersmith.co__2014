@@ -43,7 +43,654 @@
 				<h5>27 January 2014</h5>
 				<h2 class="content">Server</h2>
 				<section>
-					<p>This is a cool tutorial</p>
+					<h1>Setup Server (Ruby, Rails, MySQL, Nginx, Unicorn)</h1>
+
+<h3>Basic First Steps</h3>
+
+<p>SSH into server:</p>
+
+<pre><code>ssh root@ip.address
+</code></pre>
+
+<p>Change (Root) Password:</p>
+
+<pre><code>passwd
+</code></pre>
+
+<hr />
+
+<h4>DigitalOcean</h4>
+
+<p>Visit 'DNS' in Sidebar
+Add your domain and the ip address of your server
+Visit your domain host and set the domain namespaces to the correct values
+<code>
+NS1.DIGITALOCEAN.COM
+NS2.DIGITALOCEAN.COM
+NS3.DIGITALOCEAN.COM
+</code></p>
+
+<hr />
+
+<p><strong>Once DNS Propogates (will take a couple minutes), you should domain should now point to your server.</strong></p>
+
+<p>Create a new user for the server. Calling it developer for this case:</p>
+
+<pre><code>adduser developer
+</code></pre>
+
+<p>Give user sudo permissions:</p>
+
+<pre><code>visudo
+</code></pre>
+
+<p>Edit the file by adding the following to give the new user sudo rights. Hit ctrl+x, then y, then enter to save changes:</p>
+
+<pre><code># User privilege specification
+root  ALL=(ALL:ALL) ALL
+developer ALL=(ALL:ALL) ALL
+</code></pre>
+
+<p>Config SSH settings:</p>
+
+<pre><code>nano /etc/ssh/sshd_config
+</code></pre>
+
+<p><em>Optional:</em>
+    - Change port (22 is default: choose between 1025..65536).
+    - Deny root login
+    - Remove DNS</p>
+
+<pre><code>Port [1025..65536]
+Protocol 2
+PermitRootLogin yes # You can change this to "no" if you don't want the root user to be able to ssh in anymore
+...
+...
+UseDNS no
+AllowUsers developer # Only add this line if you have changed PermitRootLogin to no, or you can do AllowUsers deployer root
+</code></pre>
+
+<p>Hit ctrl+x, then y, then enter to save changes.</p>
+
+<p>Reload SSH:</p>
+
+<pre><code>reload ssh
+</code></pre>
+
+<p>Open a new tab and ssh as new user:</p>
+
+<pre><code>ssh [-p PORT_NUMBER] developer@ip.address
+</code></pre>
+
+<p>Update server and install essentials (curl, python components, git, node.js):</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get -y install curl python-software-properties git-core nodejs
+</code></pre>
+
+<h3>RVM</h3>
+
+<p>Download and Install RVM:</p>
+
+<pre><code>curl -L get.rvm.io | bash -s stable
+</code></pre>
+
+<p>Load RVM:</p>
+
+<pre><code>source ~/.rvm/scripts/rvm
+</code></pre>
+
+<p>Install RVM requirements:</p>
+
+<pre><code>rvm requirements
+</code></pre>
+
+<p>Install Ruby:</p>
+
+<pre><code>rvm install 2.1.0
+</code></pre>
+
+<p>Use Ruby 2.1.0 as default:</p>
+
+<pre><code>rvm use 2.1.0 --default
+</code></pre>
+
+<p>Install latest version of rubygems if rvm install didn't:</p>
+
+<pre><code>rvm rubygems current
+</code></pre>
+
+<h3>Rails</h3>
+
+<p>Install Rails:</p>
+
+<pre><code>gem install rails --no-ri --no-rdoc
+</code></pre>
+
+<p>Install Bundler:</p>
+
+<pre><code>gem install bundler
+</code></pre>
+
+<h3>MySQL</h3>
+
+<p>Install MySQL:</p>
+
+<pre><code>sudo apt-get install mysql-server php5-mysql
+</code></pre>
+
+<ul>
+<li>Note: During the installation, MySQL will ask you to set a root password. If you miss the chance to set the password while the program is installing, it is very easy to set the password later from within the MySQL shell.</li>
+</ul>
+
+
+<p>Activate MySQL:</p>
+
+<pre><code>sudo mysql_install_db
+</code></pre>
+
+<p>Finish up by running the MySQL set up script:</p>
+
+<pre><code>sudo /usr/bin/mysql_secure_installation
+</code></pre>
+
+<h3>Nginx</h3>
+
+<p>Install Nginx:</p>
+
+<pre><code>sudo apt-get install nginx
+</code></pre>
+
+<p>Start Nginx:</p>
+
+<pre><code>sudo service nginx start
+</code></pre>
+
+<h3>Preparing for Deployment locally with Unicorn, Nginx and Capistrano</h3>
+
+<p>If needed, install homebrew:</p>
+
+<pre><code>brew #Check for homebrew. If no known command, then:
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+</code></pre>
+
+<p>Install RVM locally:</p>
+
+<pre><code>curl -L get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm
+rvm requirements
+rvm install 2.1.0
+rvm rubygems current
+</code></pre>
+
+<p>Create RVM Gemset:</p>
+
+<pre><code>rvm gemset create APP_NAME
+</code></pre>
+
+<p>Install Rails:</p>
+
+<pre><code>sudo gem install rails --no-ri --no-rdoc
+</code></pre>
+
+<p>Install Bundler:</p>
+
+<pre><code>gem install bundler
+</code></pre>
+
+<p>Create new Rails App:</p>
+
+<pre><code>rails new TeacherTeams -d mysql
+</code></pre>
+
+<p>Create .ruby-version and .ruby-gemset file so that rvm will take care of automatically switching versions:</p>
+
+<pre><code>rvm --ruby-version use 2.1.0@APP_NAME
+</code></pre>
+
+<p>Add Unicorn to gemfile</p>
+
+<pre><code>gem "unicorn"
+</code></pre>
+
+<p>Create three files:</p>
+
+<p>-config/nginx.conf
+-config/unicorn.rb
+-config/unicorn_init.sh</p>
+
+<p><em><em> Make sure to change out variables (</em>APP_NAME</em>, <em>URL</em>, <em>USER</em>)
+nginx.conf:</p>
+
+<pre><code>upstream unicorn {
+  server unix:/tmp/unicorn.*APP_NAME*.sock fail_timeout=0;
+}
+
+server {
+  listen 80 default deferred;
+  #server_name *URL*.com;
+  root /home/*USER*/apps/*APP_NAME*/current/public;
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  try_files $uri/index.html $uri @unicorn;
+  location @unicorn {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_pass http://unicorn;
+  }
+
+  error_page 500 502 503 504 /500.html;
+  client_max_body_size 4G;
+  keepalive_timeout 10;
+}
+</code></pre>
+
+<p>unicorn.rb:</p>
+
+<pre><code>root = "/home/*USER*/apps/*APP_NAME*/current"
+working_directory root
+pid "#{root}/tmp/pids/unicorn.pid"
+stderr_path "#{root}/log/unicorn.log"
+stdout_path "#{root}/log/unicorn.log"
+
+listen "/tmp/unicorn.*APP_NAME*.sock"
+worker_processes 2
+timeout 30
+
+# Force the bundler gemfile environment variable to
+# reference the capistrano "current" symlink
+before_exec do |_|
+  ENV["BUNDLE_GEMFILE"] = File.join(root, 'Gemfile')
+end
+</code></pre>
+
+<p>unicorn_init.sh:</p>
+
+<pre><code>#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          unicorn
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Manage unicorn server
+# Description:       Start, stop, restart unicorn server for a specific application.
+### END INIT INFO
+set -e
+
+# Feel free to change any of the following variables for your app:
+TIMEOUT=${TIMEOUT-60}
+APP_ROOT=/home/*USER*/apps/*APP_NAME*/current
+PID=$APP_ROOT/tmp/pids/unicorn.pid
+CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
+AS_USER=*USER*
+set -u
+
+OLD_PIN="$PID.oldbin"
+
+sig () {
+  test -s "$PID" &amp;&amp; kill -$1 `cat $PID`
+}
+
+oldsig () {
+  test -s $OLD_PIN &amp;&amp; kill -$1 `cat $OLD_PIN`
+}
+
+run () {
+  if [ "$(id -un)" = "$AS_USER" ]; then
+    eval $1
+  else
+    su -c "$1" - $AS_USER
+  fi
+}
+
+case "$1" in
+start)
+  sig 0 &amp;&amp; echo &gt;&amp;2 "Already running" &amp;&amp; exit 0
+  run "$CMD"
+  ;;
+stop)
+  sig QUIT &amp;&amp; exit 0
+  echo &gt;&amp;2 "Not running"
+  ;;
+force-stop)
+  sig TERM &amp;&amp; exit 0
+  echo &gt;&amp;2 "Not running"
+  ;;
+restart|reload)
+  sig HUP &amp;&amp; echo reloaded OK &amp;&amp; exit 0
+  echo &gt;&amp;2 "Couldn't reload, starting '$CMD' instead"
+  run "$CMD"
+  ;;
+upgrade)
+  if sig USR2 &amp;&amp; sleep 2 &amp;&amp; sig 0 &amp;&amp; oldsig QUIT
+  then
+    n=$TIMEOUT
+    while test -s $OLD_PIN &amp;&amp; test $n -ge 0
+    do
+      printf '.' &amp;&amp; sleep 1 &amp;&amp; n=$(( $n - 1 ))
+    done
+    echo
+
+    if test $n -lt 0 &amp;&amp; test -s $OLD_PIN
+    then
+      echo &gt;&amp;2 "$OLD_PIN still exists after $TIMEOUT seconds"
+      exit 1
+    fi
+    exit 0
+  fi
+  echo &gt;&amp;2 "Couldn't upgrade, starting '$CMD' instead"
+  run "$CMD"
+  ;;
+reopen-logs)
+  sig USR1
+  ;;
+*)
+  echo &gt;&amp;2 "Usage: $0 &lt;start|stop|restart|upgrade|force-stop|reopen-logs&gt;"
+  exit 1
+  ;;
+esac
+</code></pre>
+
+<p>Make unicorn_init.sh executable:</p>
+
+<pre><code>chmod +x config/unicorn_init.sh
+</code></pre>
+
+<h3>Capistrano</h3>
+
+<p>Add Capistrano and RVM-Capistrano to Gemfile</p>
+
+<pre><code>gem 'capistrano'
+gem 'rvm-capistrano'
+</code></pre>
+
+<p>Install these gems:</p>
+
+<pre><code>bundle install
+</code></pre>
+
+<p>Create Capfile &amp; config/deploy.rb files by running:</p>
+
+<pre><code>capify .
+</code></pre>
+
+<p>Edit deploy.rb. Replace <em>IP_ADDRESS</em>, <em>APP_NAME</em>, <em>USER</em>, <em>PORT</em>, <em>RESPOSTIORY_LOCATION</em>:</p>
+
+<pre><code>require "bundler/capistrano"
+require "rvm/capistrano"
+
+server "*IP_ADDRESS*", :web, :app, :db, primary: true
+
+set :application, "*APP_NAME*"
+set :user, "*USER*"
+set :port, *PORT*
+set :deploy_to, "/home/#{user}/apps/#{application}"
+set :deploy_via, :remote_cache
+set :use_sudo, false
+
+set :scm, "git"
+set :repository, "git@github.com:*REPOSITORY_LOCATION*"
+set :branch, "master"
+
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
+
+after "deploy", "deploy:cleanup" # keep only the last 5 releases
+
+namespace :deploy do
+  %w[start stop restart].each do |command|
+    desc "#{command} unicorn server"
+    task command, roles: :app, except: {no_release: true} do
+      run "/etc/init.d/unicorn_#{application} #{command}"
+    end
+  end
+
+  task :setup_config, roles: :app do
+    sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+    sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
+    run "mkdir -p #{shared_path}/config"
+    put File.read("config/database.yml"), "#{shared_path}/config/database.yml"
+  end
+  after "deploy:setup", "deploy:setup_config"
+
+  task :symlink_config, roles: :app do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+  after "deploy:finalize_update", "deploy:symlink_config"
+
+  desc "Make sure local git is in sync with remote."
+  task :check_revision, roles: :web do
+    unless `git rev-parse HEAD` == `git rev-parse origin/master`
+      puts "WARNING: HEAD is not the same as origin/master"
+      puts "Run `git push` to sync changes."
+      exit
+    end
+  end
+  before "deploy", "deploy:check_revision"
+end
+</code></pre>
+
+<p>Edit Capfile:</p>
+
+<pre><code>load 'deploy'
+load 'deploy/assets'
+load 'config/deploy'
+</code></pre>
+
+<p>Next test if you are already set up with github:</p>
+
+<pre><code>ssh -T git@github.com
+# If you see:
+"Hi username! You've successfully authenticated, but GitHub does not provide shell access."
+# then you're good to go.
+# Otherwise follow this tutorial:
+#  https://help.github.com/articles/generating-ssh-keys
+</code></pre>
+
+<p>Next add your ssh key to your server:</p>
+
+<pre><code>cat ~/.ssh/id_rsa.pub | ssh [-p PORT] developer@123.123.123.123 'cat &gt;&gt; ~/.ssh/authorized_keys'
+</code></pre>
+
+<p>If you get an error like:</p>
+
+<pre><code>bash: /home/developer/.ssh/authorized_keys: No such file or directory
+</code></pre>
+
+<p>then ssh to the server (as developer) and run the following:</p>
+
+<pre><code>cd /home/developer
+mkdir .ssh
+chmod 775 .ssh
+</code></pre>
+
+<p>Create gitignore file and add the following (tweak as needed):</p>
+
+<pre><code># bundler state
+/.bundle
+/vendor/bundle/
+/vendor/ruby/
+
+# minimal Rails specific artifacts
+db/*.sqlite3
+/log/*
+/tmp/*
+
+# various artifacts
+**.war
+*.rbc
+*.sassc
+.rspec
+.redcar/
+.sass-cache
+/config/config.yml
+/config/database.yml
+/coverage.data
+/coverage/
+/db/*.javadb/
+/db/*.sqlite3
+/doc/api/
+/doc/app/
+/doc/features.html
+/doc/specs.html
+/public/cache
+/public/stylesheets/compiled
+/public/system/*
+/spec/tmp/*
+/cache
+/capybara*
+/capybara-*.html
+/gems
+/specifications
+rerun.txt
+pickle-email-*.html
+
+# If you find yourself ignoring temporary files generated by your text editor
+# or operating system, you probably want to add a global ignore instead:
+#   git config --global core.excludesfile ~/.gitignore_global
+#
+# Here are some files you may want to ignore globally:
+
+# scm revert files
+**.orig
+
+# Mac finder artifacts
+.DS_Store
+
+# Netbeans project directory
+/nbproject/
+
+# RubyMine project files
+.idea
+
+# Textmate project files
+/*.tmproj
+
+# vim artifacts
+**.swp
+
+#Espresso
+*.esproj
+.rvmrc
+</code></pre>
+
+<p>Now visit your server and login to mysql.</p>
+
+<pre><code> mysql -u root -p
+ #Enter your password when prompted. 
+</code></pre>
+
+<p>Create the databases that you need:</p>
+
+<pre><code>create database DB_NAME;
+</code></pre>
+
+<p>Exit mysql:</p>
+
+<pre><code>exit
+</code></pre>
+
+<p>Create a new database configuration file config/database.base.yml and edit it as so. Use this template to also edit config/database.yml for the databases you created on your server.
+<strong>NOTE: Leave database names and passwords as astericks in the database.base.yml file</strong></p>
+
+<pre><code># MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+# Install the MYSQL driver
+#   gem install mysql2
+#
+# Ensure the MySQL gem is defined in your Gemfile
+#   gem 'mysql2'
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: ***
+  pool: 5
+  username: root
+  password: ***
+  host: localhost
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: ***
+  pool: 5
+  username: root
+  password: ***
+  host: localhost
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: ***
+  pool: 5
+  username: root
+  password: ***
+  host: localhost
+</code></pre>
+
+<p>Initalize git repository:</p>
+
+<pre><code>git init
+git add .
+git commit -m "Inital Commit"
+</code></pre>
+
+<p>Now go to github and create a new repository:</p>
+
+<pre><code>git remote add origin git@github.com:github_user/repo_name
+git push origin master
+</code></pre>
+
+<p>Setup Deployment:</p>
+
+<pre><code>cap deploy:setup
+</code></pre>
+
+<p>Edit database.yml on server to add username and password to the production database:</p>
+
+<pre><code>vi apps/*PROJECT_NAME*/shared/config/database.yml
+</code></pre>
+
+<p>Deploy it cold:</p>
+
+<pre><code>    cap deploy:cold
+</code></pre>
+
+<p>Fix up nginx and restart:</p>
+
+<pre><code>sudo rm /etc/nginx/sites-enabled/default
+sudo service nginx restart
+sudo update-rc.d -f unicorn_PROJECTNAME defaults
+</code></pre>
+
+<p>Push changes and deploy:</p>
+
+<pre><code>git push origin master
+cap deploy
+</code></pre>
+
+<p>CONGRATULATIONS! You now have a running server!</p>
+
+<hr />
+
+<h4>Sources</h4>
+
+<p>http://www.andrewgertig.com/setting-up-a-digital-ocean-droplet-vps-on-ubuntu-with-rails-nginx-unicorn-postgres-redis-and-capistrano</p>
+
+<p>https://coderwall.com/p/yz8cha</p>
 
 					<hr>
 				</section>

@@ -8,6 +8,7 @@ category: internship
 Well, this week was a wild one; at least as far as the weather goes. We ended up missing two days of school to snow. 
 
 ![Horseshoe Snow]({{ site_url }}/images/snow_on_shoe.jpg)
+<br/>
 ![Rutledge Snow]({{ site_url }}/images/rutledge_snow.jpg)
 
 Despite the snow, I was able to make some solid progress with our new application. The first order of business was knocking out a task that's been on our to-do list for a long time. We wanted a way of invoicing our customers from our own server so that we can manage payments better. For this, I purchased a new server and installed [Pancake](http://www.pancakeapp.com), a self-hosted billing platform, on it. This is what our billing system looks like now:
