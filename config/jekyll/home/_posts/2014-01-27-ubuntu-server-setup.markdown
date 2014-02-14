@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: tutorial
 published: true
 title: Server
 category: tutorial
@@ -25,11 +25,11 @@ Change (Root) Password:
 Visit 'DNS' in Sidebar
 Add your domain and the ip address of your server
 Visit your domain host and set the domain namespaces to the correct values
-```
-NS1.DIGITALOCEAN.COM
-NS2.DIGITALOCEAN.COM
-NS3.DIGITALOCEAN.COM
-```
+
+	NS1.DIGITALOCEAN.COM
+	NS2.DIGITALOCEAN.COM
+	NS3.DIGITALOCEAN.COM
+
 ***
 
 
@@ -596,7 +596,7 @@ Edit database.yml on server to add username and password to the production datab
 
 Deploy it cold:
 
-		cap deploy:cold
+	cap deploy:cold
 		
 Fix up nginx and restart:
 
@@ -609,14 +609,14 @@ Push changes and deploy:
 	git push origin master
 	cap deploy
 	
-CONGRATULATIONS! You now have a running server!
+**CONGRATULATIONS!** You now have a running server!
 	
 ***
 
 #### Sources
-http://www.andrewgertig.com/setting-up-a-digital-ocean-droplet-vps-on-ubuntu-with-rails-nginx-unicorn-postgres-redis-and-capistrano
+[andrewgertig.com](http://www.andrewgertig.com/setting-up-a-digital-ocean-droplet-vps-on-ubuntu-with-rails-nginx-unicorn-postgres-redis-and-capistrano)
 
-https://coderwall.com/p/yz8cha
+[Coderwall](https://coderwall.com/p/yz8cha)
 
 
 

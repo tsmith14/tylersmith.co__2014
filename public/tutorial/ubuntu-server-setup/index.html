@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="http://fonts.googleapis.com/css?family=Bitter:400,700|Open+Sans:400italic,700italic,400,700" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="/css/style.css" type="text/css">
+		<link rel="stylesheet" href="/css/markdown.css" type="text/css">
 		<link rel="icon" href="/favicon.ico">
 	</head>
 	<body class="">
@@ -30,18 +31,11 @@
 			</ul>
 		</header>
 		
-		<div class="top-strip"></div>
-<main class="content">
+		<main class="content">
     <section class="container">
     	<div class="row-fluid">
-    		<article class="home-icon">
-				<a href="http://tylersmith.co/">
-					<i class="icon-home"></i> 
-				</a>
-			</article>
 			<article class="post">
 				<h5>27 January 2014</h5>
-				<h2 class="content">Server</h2>
 				<section>
 					<h1>Setup Server (Ruby, Rails, MySQL, Nginx, Unicorn)</h1>
 
@@ -63,12 +57,12 @@
 
 <p>Visit 'DNS' in Sidebar
 Add your domain and the ip address of your server
-Visit your domain host and set the domain namespaces to the correct values
-<code>
-NS1.DIGITALOCEAN.COM
+Visit your domain host and set the domain namespaces to the correct values</p>
+
+<pre><code>NS1.DIGITALOCEAN.COM
 NS2.DIGITALOCEAN.COM
 NS3.DIGITALOCEAN.COM
-</code></p>
+</code></pre>
 
 <hr />
 
@@ -666,7 +660,7 @@ git push origin master
 
 <p>Deploy it cold:</p>
 
-<pre><code>    cap deploy:cold
+<pre><code>cap deploy:cold
 </code></pre>
 
 <p>Fix up nginx and restart:</p>
@@ -682,22 +676,22 @@ sudo update-rc.d -f unicorn_PROJECTNAME defaults
 cap deploy
 </code></pre>
 
-<p>CONGRATULATIONS! You now have a running server!</p>
+<p><strong>CONGRATULATIONS!</strong> You now have a running server!</p>
 
 <hr />
 
 <h4>Sources</h4>
 
-<p>http://www.andrewgertig.com/setting-up-a-digital-ocean-droplet-vps-on-ubuntu-with-rails-nginx-unicorn-postgres-redis-and-capistrano</p>
+<p><a href="http://www.andrewgertig.com/setting-up-a-digital-ocean-droplet-vps-on-ubuntu-with-rails-nginx-unicorn-postgres-redis-and-capistrano">andrewgertig.com</a></p>
 
-<p>https://coderwall.com/p/yz8cha</p>
+<p><a href="https://coderwall.com/p/yz8cha">Coderwall</a></p>
 
-					<hr>
+					<!--<hr>-->
 				</section>
-				<section style="font-weight:bold; margin-bottom: 2em;">
+				<!--<section style="font-weight:bold; margin-bottom: 2em;">
 					
 						
-				</section>
+				</section>-->
 			</article>
 		</div>
 	</section>

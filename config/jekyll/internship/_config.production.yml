@@ -4,6 +4,7 @@ destination: ../../../public/internship
 auto: false
 paginate: 10 # pagination based on number of posts
 url: http://internship.tylersmith.co
+home_url: http://tylersmith.co
 exclude:
   - Rakefile
   - Gemfile

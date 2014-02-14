@@ -8,8 +8,10 @@ h1, h2, h3, h4, h5, h6{ font-size: 100%; font-weight: normal;}
 q:before, q:after{ content: '';}
 abbr, acronym{ border: 0;}
 
-html{ overflow-y: scroll;}
-body{ background: white; color: #4a4a4a; font: 16px/1.5 'Open Sans', Verdana, Arial, sans-serif; padding: 60px 40px 10px 240px;}
+html{ overflow-y: scroll; height:  100%;
+}
+body{ background: white; color: #4a4a4a; font: 16px/1.5 'Open Sans', Verdana, Arial, sans-serif; padding: 60px 40px 30px 240px; min-height: 100%; position: relative; 
+}
 a{ color: #2a9335/*#449fdb*/; cursor: pointer; text-decoration: none;}
 a:hover{ text-decoration: underline;}
 img{ max-width: 100%;}
@@ -43,6 +45,7 @@ img{ max-width: 100%;}
     width: 100px;
 	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
 	color: #ffffff;
+	margin-top: 43px;
 }
 body.internship #logo {
 	background-color: #3fa9f5;
@@ -89,8 +92,8 @@ body.colophon #logo{ background-color: #dbc81f;}*/
 #side .on,
 #side .on:hover{ color: #449fdb; cursor: default; text-decoration: none;}
 
-.post{ border-top: 1px solid #ededed; padding: 30px;}
-.post:hover{ border-top-color: #449fdb;}
+.post{ /*border-top: 1px solid #ededed; */ padding: 10px;}
+/*.post:hover{ border-top-color: #449fdb;}*/
 .post-info{ color: #b0b0b0; float: right; font-size: 12px; line-height: 1.25; margin-left: 60px; text-align: right;}
 .post:hover .post-info{ color: #4a4a4a;}
 .post-date{ display: block;}
@@ -180,12 +183,13 @@ a, .post-info{
   -webkit-transition: border 250ms ease-out;
 }
 
-#footer {	
+#footer {
 	font-size: 12px;
-	position: absolute;
-	bottom: 5px;
+    position: absolute;
+    clear: both;
+    height: 30px;
+    bottom: 0px;
 }
-
 /* Responsiveness */
 
 @media only screen and (max-width: 1040px) {

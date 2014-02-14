@@ -4,6 +4,7 @@ destination: ../../../public/internship
 auto: false
 paginate: 10 # pagination based on number of posts
 url: http://localhost:3001/internship
+home_url: http://localhost:3001
 exclude:
   - Rakefile
   - Gemfile
