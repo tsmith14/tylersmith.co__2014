@@ -1,0 +1,14 @@
+---
+layout: post
+published: false
+title: Week 8
+category: internship
+---
+
+Triggers for active subscriptions
+
+Federated table script
+
+Meeting with Ben
+
+Promotional Goods

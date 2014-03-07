@@ -1,6 +1,21 @@
 ---
 layout: post
-published: false
+published: true
 title: Week 5
 category: internship
 ---
+
+####Ice Storms... Round 2!
+We again saw snow and ice for a second time this semester and ended up missing 3 days of school. 
+![Campus Show]({{ site.url }}/images/usc_campus_snow.jpg)
+
+
+<br>
+This week we again met with the British personal development company to follow up with last week's conversations. Right now, we both are a bit busy to move forward but we will be meeting with them again in a few months to potentially investigate and implement a simple integration solution to see if it would be a beneficial partnership. We are excited about the opportunity and the potential for us to offer a PD solution in the states and to start moving Classroom Mosaic into Britain.
+
+<br>
+Although I personally was unable to attend, Classroom Mosaic made an appearance at the National Conference on Education ([nce.aasa.org](http://nce.aasa.org/)) in Nashville. We met a few different superintendents and are investigating a potential partnership with a big education company. 
+Here's our setup: ![Classroom Mosaic Setup]({{site.url}}/images/cm_setup_nce.jpg)
+
+<br>
+While my partner was at the conference, I focused on progressing on the core aspect of our project. This is the piece that will handle the teacher, student, and administrator data. I was able to really get some finalizing details on the design so that we can start implementing it in the near future!

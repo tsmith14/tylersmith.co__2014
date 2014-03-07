@@ -1,0 +1,20 @@
+---
+layout: post
+published: true
+title: Week 7
+category: internship
+---
+
+This week my partner and I started discussing the details of the contract with DIME. We are trying to figure out the numbers for the contract. 
+
+We decided that in order to start generating interest, we needed to have a landing page with signups. After a 6 or 7 hours, here's the result: [TeacherTeams](http://teacherteams.com). In order to get this site setup, I had to setup emails for TeacherTeams. We are using [Hover](https://www.hover.com/), a domain hosting company, to manage our email accounts. Additionally, this site has [Mixpanel](https://mixpanel.com) analytics built in so that we can not only track page visits, but also signups and twitter link clicks. 
+
+With conferences coming up, we started making a list of conferences. Here's what we're looking at right now:
+
+| Conferences		  	 | Description							     	 | Dates			 | Location 		 | 
+|------------------------|-----------------------------------------------|-------------------|-------------------|
+| SCASA 			 	 | SC Association of School Administrators  	 | June 15 - 18      | Myrtle Beach, SC  |
+| CLAS				  	 | Council for Leaders in AL Schools		 	 | June 22 - 25		 | Montgomery, AL	 |
+| ISTE				  	 | International Society for Tech in Edu	 	 | June 28 - July 1  | Atlanta, GA		 | 
+| NAESP				   	 | National Assoc. of Elementary Princpals	 	 | July 10 - 12		 | Nashville, TN	 | 
+| GAEL 				  	 | GA Association of Education Leaders		 	 | July 13 - 16		 | Jekyll Island, GA | 

@@ -1,0 +1,16 @@
+---
+layout: post
+published: true
+title: Week 6
+category: internship
+---
+
+After finishing up the database design of BentyCore last week, I moved on to designing the TeacherTeam database this week. It's coming along really well and should integrate quite nicely. We will be moving into implementation in the next couple weeks!
+
+We had a really big meeting this week as well. Before going into the meeting, here's a little background:
+
+***
+TeacherTeams is currently a joint venture between our company, Benty, and DIME Ventures. DIME is owned by a guy we connected with because of Classroom Mosaic. The venture was setup so that we would design and program the system, and that DIME would handle customer service and sales. We signed the joint venture contract in March of 2013 but have just been able to begin working on the system. However, over this last year, my partner and I realized that we didn't want Benty to be a development contractor, we want to be a full-service business. We want TeacherTeams to be our product to build, manage, and sell. 
+***
+
+Now, back to the meeting. We met with DIME this week to renegotiate the joint venture agreement. We weren't really in the place to do so, but we felt it was something we had to at least try to do. The meeting actually went great. DIME was open to renegotiations. Our major plan is to offer him a royalty fee and commission for sales. We have to decide on specific numbers and send him a revised contract in the coming weeks. If we are able to get a new contract approved, we will have full control over the product. We will be able to use Benty's resources to handle customer service and sales. We also will be able to market both products at conferences we attend. It will be a huge breakthrough if we can get a new contract approved! 
