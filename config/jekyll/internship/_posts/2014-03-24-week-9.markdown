@@ -1,0 +1,12 @@
+---
+layout: post
+published: true
+title: Week 9
+category: internship
+---
+
+After making the lists of conferences and promotional goods we need last week, my partner and I decided to sit down and create a budget for the summer. We listed out all of our major expenses: employees, rent, conferences (booth, hotel, travel, food), promotional goods. We now know where we stand and have the data we need to make some costs cuts if we need to. 
+
+Additionally, this week, I created what's called a "Lean Plan". This plan helps guide a new idea into a product state. It forces you to pick a key client base as well as key features. It also helps you think about a revenue model and a break-even target. 
+
+A final key thing I completed this week was that I got BentyCore's login system working. This will allow us to move over users in our current system to our new system without having to change their password. This will also allow us to start showing rights-based data for development purposes. The next step will be doing this same thing on the TeacherTeam system so that we can authenticate users. 

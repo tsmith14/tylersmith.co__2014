@@ -1,14 +1,12 @@
 ---
 layout: post
-published: false
+published: true
 title: Week 8
 category: internship
 ---
 
-Triggers for active subscriptions
+This week I worked on getting some important scripts working for our database. One of the scripts helps manage a table of subscriptions. Specifically, this script is called a trigger. Basically, a trigger is "triggered" by a certain action on a database table. In this case, whenever our subscriptions table (the table that manages who has access to our system) is edited, the script runs and makes sure that there is a single 'active subscription' so that we know which subscription is the correct one. 
 
-Federated table script
+Another script I wrote this week was for managing the federated tables I mentioned in a previous week. This script creates all of the server connections so that we have access to universal tables in both the BentyCore and TeacherTeam system. 
 
-Meeting with Ben
-
-Promotional Goods
+Additionally, I met with my business partner to start discussing what our plans are for the summer. We created a list of key conferences we'd like to attend as well as new promotional goods we will have to get for TeacherTeams. These lists our saved on our Trello account. 
