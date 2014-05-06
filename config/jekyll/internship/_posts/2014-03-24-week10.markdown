@@ -1,0 +1,14 @@
+---
+layout: post
+published: true
+title: Week 10
+category: internship
+---
+
+After getting the BentyCore login system working, I moved on to get the Teacher Team login system working using the same passwords as the Core system. This was an important step because it is the primary goal in connecting the two systems. All of our child applications based on the BentyCore should be able to access and use the Core's data. After messing around with the login system a while and adding some custom code to make sure everything translated right, I was able to get the Teacher Team login working. 
+
+Here's a demo video of this process:
+![Teacher Team Login]({{ site.url }}/images/tt_demo_login.gif))
+
+
+With this login process, I also made it possible to create a link that will allow a user logged in to Teacher Teams to move over to BentyCore and still remain logged in. This will allow admin users to access and edit their data with out having to login again. 
