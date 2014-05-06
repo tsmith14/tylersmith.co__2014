@@ -5,7 +5,7 @@ title: Week 11
 category: internship
 ---
 
-This week, for the first time, I tried to create a Javascript plugin. A plugin is basically a modular piece of code, meaning that it is versatile and can be used in many different projects. Plugins are great because you and others can reuse them over and over. In order to learn how to create a plugin I followed the JQuery tutorials here: ![JQuery Tutorials](http://learn.jquery.com/plugins/). Here's an example of a plugin that allows you to embed google maps in your site: ![Google Map Plugin](http://hpneo.github.io/gmaps/). You can see how many people could use this same function on multiple sites.
+This week, for the first time, I tried to create a Javascript plugin. A plugin is basically a modular piece of code, meaning that it is versatile and can be used in many different projects. Plugins are great because you and others can reuse them over and over. In order to learn how to create a plugin I followed the JQuery tutorials here: [JQuery Tutorials](http://learn.jquery.com/plugins/). Here's an example of a plugin that allows you to embed google maps in your site: [Google Map Plugin](http://hpneo.github.io/gmaps/). You can see how many people could use this same function on multiple sites.
 
 For my plugin, I needed a way to create a table that allowed inline editing and saving of data. After getting the gist of plugins, I got the code working the way I wanted. Here's an example of it in action: ![Custom Table Demo]({{ site.url }}/images/custom_table_plugin_demo.gif)
 

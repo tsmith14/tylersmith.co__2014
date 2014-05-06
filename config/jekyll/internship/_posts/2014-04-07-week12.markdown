@@ -1,6 +1,12 @@
 ---
 layout: post
-published: false
+published: true
 title: Week 12
 category: internship
 ---
+
+After getting the custom table plugin working, the next step was to use it. The goal of the plugin was to allow users to upload a CSV or Excel plugin and upload it into the system. Then the system would take the spreadsheet and turn it into editable cells that can be tweaked before being saved. This all went very well! Here's the result: ![Entity Upload Demo]({{ site.url }}/images/entity_upload_demo.gif)
+
+As you can see, an Excel is directly uploaded and processed on the website, and then my plugin is activated which allows the data to be edited before finally being saved!
+
+This week I also started sketching out the design for Teacher Team meeting component of the site. This is one of the pivotal parts of the site and design will refine overtime. 
