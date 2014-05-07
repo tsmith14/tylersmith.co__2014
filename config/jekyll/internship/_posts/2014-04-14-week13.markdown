@@ -1,6 +1,10 @@
 ---
 layout: post
-published: false
+published: true
 title: Week 13
 category: internship
 ---
+
+This week I went about creating another important javascript plugin that we will need. This plugin is called 'YayNay List' and basically will create two lists: a list of objects to choose from ('NayList') and a list of objects that some action should occur to ('YayList'). The idea was to have something similar to this [Multiselect Plugin](http://loudev.com/), however, I wanted to create one from scratch to have full control over its setup. This plugin will be used to show a list of all users in BentyCore and the user will move over the users that should be in Teacher Teams over to the 'YayList'. Upon being added to the YayList these users are also assigned a Teacher Team role. Here's the plugin in action: ![YayNayList Demo]({{ site.url }}/images/yaynay_list_demo.gif)
+
+Also, this week I had an email conversation with EdSurge. They were asking questions to get more info about Classroom Mosaic. EdSurge keeps an index of EdTech products so that schools and districts have a simple reference place. Getting a good write-up on their website could help us tremendously. This is what ourprofile looks like: [EdSurge](https://www.edsurge.com/classroom-mosaic--2)

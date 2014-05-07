@@ -1,6 +1,13 @@
 ---
 layout: post
-published: false
+published: true
 title: Week 14
 category: internship
 ---
+
+
+This week I created method that will allow us to update our federated database structure with a simple command. Basically, it connects to our server, logs into our database, and runs a database procedure. Nothing too revolutionary but it should save us a lot of time going into the future.
+
+Also, this week, I wrapped up the final details on getting office space for us this summer. It's always fun having a full office in the summer so that we can spread out and make it a creative space. 
+
+Finally, I spent a lot of time recording our marketing plan for Teacher Teams. I had to figure out who are best clients should be, and our first steps for getting clients once we release. I believe we our going to try to get some beta contracts where we'll work closely with districts to make sure everything works and to get feedback so that we can improve the product as we go. 
